@@ -37,8 +37,8 @@ VALIDATE $? "enabling nodejs... version 20"
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $? "Installing node js..."
 
-id expense
-if [ $? -ne 0]
+id expense &>>$LOGFILE
+if [ $? -ne 0 ]
 then
 useradd expense 
 VALIDATE $? "User Added !!"
@@ -77,7 +77,7 @@ VALIDATE $? "Enabling backend"
 dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySQL Client"
 
-mysql -h db.daws78s.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
+mysql -h db.daws78s-rev.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
 VALIDATE $? "Schema loading"
 
 systemctl restart backend &>>$LOGFILE

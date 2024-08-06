@@ -42,7 +42,7 @@ VALIDATE $? "Starting mysql server"
 
 mysql -h db.daws78s-rev.online -uroot -pExpenseApp@1 -e 'show databases;' &>>$LOGFILE
 
-if[$? -ne 0]
+if [$? -ne 0]
 then
 mysql_secure_installation --set-root-pass ExpenseApp@1 
 VALIDATE $? "MySQL Root password Setup"
